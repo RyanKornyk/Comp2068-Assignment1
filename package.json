@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/RyanKornyk/Comp2068-Assignment1/issues"
   },
-  "homepage": "https://github.com/RyanKornyk/Comp2068-Assignment1#readme"
+  "homepage": "https://github.com/RyanKornyk/Comp2068-Assignment1#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
 }
