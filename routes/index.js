@@ -25,19 +25,4 @@ router.get('/profile', function(req, res, next) {
 router.get('/service', function(req, res, next) {
   res.render('service', { title: 'Service' });
 });
-
-/* GET login page. */
-router.get('/login', function(req, res, next) {
-  res.render('login', { title: 'Login' });
-});
-
-/* GET update page. */
-router.get('/update', function(req, res, next) {
-  res.render('update', { title: 'Update' });
-});
-
-/* GET business page. */
-router.get('/business', function(req, res, next) {
-  res.render('business', { title: 'Business' });
-});
 module.exports = router;
