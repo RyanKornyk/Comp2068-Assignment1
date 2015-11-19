@@ -41,23 +41,39 @@ router.get('/service', function(req, res, next) {
 
 /* Render Login page. */
 router.get('/login', function(req, res, next) {
-    //if (!req.user) {
+    if (!req.user) {
         res.render('login', {
             title: 'Login',
-            //messages: req.flash('loginMessage')
-            //displayName: req.user ? req.user.displayName : ''
+            messages: req.flash('loginMessage'),
+            displayName: req.user ? req.user.displayName : ''
         });
-    //} else {
-    //    return res.redirect('/users');
-    //}
+    } else {
+        return res.redirect('/users');
+    }
 });
 
-/* GET update page. */
-router.get('/register', function(req, res, next) {
-    res.render('register', {
-        title: 'Register'
-    });
+/*Show Registration Page */
+router.get('/register', function (req, res, next) {
+    if (!req.user) {
+        res.render('register', {
+            title: 'Register',
+            messages: req.flash('registerMessage'),
+            displayName: req.user ? req.user.displayName : ''
+        });
+    }
+    else {
+        return res.redirect('/');
+    }
 });
+
+
+/* POST signup data. */
+router.post('/register', passport.authenticate('local-registration', {
+    //Success go to Profile Page / Fail go to Signup page
+    successRedirect : '/users',
+    failureRedirect : '/register',
+    failureFlash : true
+}));
 
 /* GET business page. */
 router.get('/business', function(req, res, next) {
